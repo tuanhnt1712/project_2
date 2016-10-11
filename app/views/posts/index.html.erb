@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+  <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+  <br />
+  <br />
+
+  <table class = "table table-bordered table-striped">
+    <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+    <thead>
+      <tr>
+         <th>Title</th>
+         <th>Download Link</th>
+         <th> </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= link_to "Download File", post.attachment_url %></td>
+          <td><%= button_to "Delete",  post, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{post.title}?" %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+     
+  </table>
+<% end %>

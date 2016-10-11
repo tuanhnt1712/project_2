@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <aside class="col-md-4">
+    <section>
+    </section>
+    <%= link_to "New Post", new_post_path %>
+  </aside>
+<% else %>
+  <h1> c tu ma thiet ke homepage di :p </h1>
+  <div class="container-responsive">
+    <div class="row">
+      <div class="center jumbotron">
+        <h3>Cac ban phai dang nhap moi post dk :v</h3>    
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
